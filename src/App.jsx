@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import TaskInput from './components/TaskInput';
 import TaskList from './components/TaskList';
 import Login from './components/Login';
+import FeedbackModal from './components/FeedbackModal';
 import { db } from './firebase';
 import {
   collection,
@@ -21,6 +22,7 @@ function DatabaseApp() {
   const [tasks, setTasks] = useState([]);
   const { currentUser, logout } = useAuth();
   const [loading, setLoading] = useState(true);
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 
   useEffect(() => {
     if (!currentUser) return;
@@ -100,8 +102,11 @@ function DatabaseApp() {
         <div className="flex justify-between items-start">
           <div className="space-y-2">
             <h1 className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-violet-300 to-pink-300 drop-shadow-sm">
-              Focus & Flow
+              The Daily Task Flow
             </h1>
+            <p className="text-slate-300 text-sm max-w-md">
+              A private, cloud-synced to-do list for managing daily tasks.
+            </p>
             <p className="text-slate-400 font-medium">
               {currentUser.email} • {tasks.length > 0
                 ? `${completedCount} of ${tasks.length} tasks completed`
@@ -118,7 +123,24 @@ function DatabaseApp() {
 
         {/* Main Content */}
         <div>
-          <TaskInput onAdd={addTask} />
+          <div className="flex items-center gap-2 mb-8 relative z-10">
+            <div className="flex-1">
+              <TaskInput onAdd={addTask} />
+            </div>
+            <button
+              onClick={() => setIsFeedbackOpen(true)}
+              className="glass-button bg-slate-700 hover:bg-slate-600 shadow-none border border-white/10 h-[52px] whitespace-nowrap"
+              title="Share Feedback"
+            >
+              Feedback
+            </button>
+          </div>
+
+          <FeedbackModal
+            isOpen={isFeedbackOpen}
+            onClose={() => setIsFeedbackOpen(false)}
+          />
+
           {loading ? (
             <div className="text-center text-slate-500 py-10">Loading your tasks...</div>
           ) : (

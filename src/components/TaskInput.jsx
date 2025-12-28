@@ -12,7 +12,7 @@ function TaskInput({ onAdd }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="mb-8 relative z-10">
+        <form onSubmit={handleSubmit} className="relative z-10">
             <div className="flex gap-4">
                 <input
                     type="text"
