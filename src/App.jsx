@@ -101,8 +101,8 @@ function DatabaseApp() {
         {/* Header */}
         <div className="flex justify-between items-start">
           <div className="space-y-2">
-            <h1 className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-violet-300 to-pink-300 drop-shadow-sm">
-              The Daily Task Flow
+            <h1 className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-emerald-400 drop-shadow-sm">
+              MyDay 🎄
             </h1>
             <p className="text-slate-300 text-sm max-w-md">
               A private, cloud-synced to-do list for managing daily tasks.
@@ -123,13 +123,13 @@ function DatabaseApp() {
 
         {/* Main Content */}
         <div>
-          <div className="flex items-center gap-2 mb-8 relative z-10">
-            <div className="flex-1">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8 relative z-10">
+            <div className="flex-1 w-full">
               <TaskInput onAdd={addTask} />
             </div>
             <button
               onClick={() => setIsFeedbackOpen(true)}
-              className="glass-button bg-slate-700 hover:bg-slate-600 shadow-none border border-white/10 h-[52px] whitespace-nowrap"
+              className="glass-button bg-slate-700 hover:bg-slate-600 shadow-none border border-white/10 h-[52px] w-full sm:w-auto whitespace-nowrap"
               title="Share Feedback"
             >
               Feedback

@@ -31,7 +31,7 @@ export default function Login() {
     return (
         <div className="min-h-screen flex items-center justify-center px-4">
             <div className="glass-panel p-8 w-full max-w-md space-y-6">
-                <h2 className="text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-violet-300 to-pink-300">
+                <h2 className="text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-emerald-400">
                     {isLogin ? 'Welcome Back' : 'Create Account'}
                 </h2>
 
@@ -73,7 +73,7 @@ export default function Login() {
                     {isLogin ? "Don't have an account? " : "Already have an account? "}
                     <button
                         onClick={() => setIsLogin(!isLogin)}
-                        className="text-violet-300 hover:text-violet-200 font-medium hover:underline"
+                        className="text-emerald-300 hover:text-emerald-200 font-medium hover:underline"
                     >
                         {isLogin ? 'Sign Up' : 'Log In'}
                     </button>

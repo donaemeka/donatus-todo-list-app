@@ -19,7 +19,7 @@ function TaskItem({ task, onToggle, onDelete }) {
 
             <button
                 onClick={() => onDelete(task.id)}
-                className="text-slate-400 hover:text-red-400 p-2 rounded-lg hover:bg-white/5 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none"
+                className="text-slate-400 hover:text-red-400 p-2 rounded-lg hover:bg-white/5 transition-colors focus:outline-none"
                 aria-label="Delete task"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
