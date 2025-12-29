@@ -32,7 +32,7 @@ export default function Login() {
         <div className="min-h-screen flex items-center justify-center px-4">
             <div className="glass-panel p-8 w-full max-w-md space-y-6">
                 <h2 className="text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-emerald-400">
-                    {isLogin ? 'Welcome Back' : 'Create Account'}
+                    {isLogin ? 'Ready to tackle your day?' : 'Create Account'}
                 </h2>
 
                 {error && <div className="bg-red-500/20 text-red-100 p-3 rounded-lg text-center">{error}</div>}

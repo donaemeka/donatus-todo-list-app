@@ -143,31 +143,45 @@ function DatabaseApp() {
     <div className="min-h-screen py-10 px-4 sm:px-0">
       <div className="max-w-xl mx-auto space-y-8">
         {/* Header */}
-        <div className="flex justify-between items-start">
-          <div className="space-y-2">
-            <h1 className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-emerald-400 drop-shadow-sm">
-              MyDay 🎄
-            </h1>
-            <p className="text-slate-300 text-sm max-w-md">
-              A private, cloud-synced to-do list for managing daily tasks.
-            </p>
-            <p className="text-slate-400 font-medium">
-              {currentUser.email} • {tasks.length > 0
-                ? `${completedCount} of ${tasks.length} tasks completed`
-                : 'Ready to organize your day?'}
-            </p>
-          </div>
+        {/* Navbar */}
+        <nav className="flex justify-end items-center gap-4 py-2">
+          {completedCount > 0 && tasks.length > 0 && (
+            <div className="text-xs font-medium px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
+              {completedCount}/{tasks.length} Completed
+            </div>
+          )}
           <button
             onClick={() => setView('profile')}
-            className="text-right group"
+            className="flex items-center gap-3 group pl-4 border-l border-white/10"
           >
-            <div className="text-slate-200 font-medium group-hover:text-emerald-400 transition-colors">
-              {currentUser.email}
+            <div className="text-right">
+              <div className="text-sm font-medium text-slate-200 group-hover:text-emerald-400 transition-colors">
+                {currentUser.email}
+              </div>
+              <div className="text-[10px] uppercase tracking-wider text-slate-500 group-hover:text-emerald-500/70 transition-colors">
+                View Profile
+              </div>
             </div>
-            <div className="text-xs text-slate-500 group-hover:text-emerald-500/70 transition-colors uppercase tracking-wider">
-              View Profile
-            </div>
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-emerald-600 shadow-lg shadow-emerald-900/20 group-hover:scale-105 transition-transform"></div>
           </button>
+        </nav>
+
+        {/* Hero Section */}
+        <div className="text-center space-y-4">
+          <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-emerald-400 drop-shadow-sm pb-2">
+            MyDay 🎄
+          </h1>
+
+          {/* Info Card */}
+          <div className="glass-panel p-6 mx-4 sm:mx-0 relative overflow-hidden group hover:bg-slate-800/50 transition-colors">
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-red-500 to-emerald-500 opacity-50"></div>
+            <p className="text-slate-300 text-sm leading-relaxed relative z-10">
+              A private, cloud-synced to-do list for managing your daily tasks.
+              {tasks.length === 0
+                ? " Start by adding a task below!"
+                : " Stay focused and organized."}
+            </p>
+          </div>
         </div>
 
         {/* Main Content */}
@@ -235,7 +249,6 @@ function DatabaseApp() {
           )}
         </div>
       </div>
-
       <footer className="text-center text-slate-500 text-sm mt-12 pb-4">
         <p>© 2025 Donatus Emeka Anyalebechi. Built with React & Tailwind CSS.</p>
       </footer>
